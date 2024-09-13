@@ -46,3 +46,25 @@ try {
 } catch (_) {
     console.log("Scenario 3 pass")
 }
+
+//withdraw tests
+bank.withdraw("John Doe", "2938298", 5);
+if (account.balance == 5) {
+    console.log("Scenario 1 pass")
+} else {
+    console.log("Scenario 1 fail")
+}
+
+try {
+    bank.withdraw("John Doe", "12345", 10);
+    console.log("Scenario 2 fail")
+} catch (_) {
+    console.log("Scenario 2 pass")
+}
+
+try {
+    bank.withdraw("John Doe", "10", 10);
+    console.log("Scenario 3 fail")
+} catch (_) {
+    console.log("Scenario 3 pass")
+}
