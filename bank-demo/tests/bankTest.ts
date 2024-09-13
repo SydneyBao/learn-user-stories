@@ -68,3 +68,25 @@ try {
 } catch (_) {
     console.log("Scenario 3 pass")
 }
+
+//balance tests
+const balance = bank.getBalance("John Doe", "2938298");
+if (balance == account.balance) {
+    console.log("Scenario 1 pass")
+} else {
+    console.log("Scenario 1 fail")
+}
+
+try {
+    bank.getBalance("John Doe", "12345");
+    console.log("Scenario 2 fail")
+} catch (_) {
+    console.log("Scenario 2 pass")
+}
+
+try {
+    bank.getBalance("John Doe", "10");
+    console.log("Scenario 3 fail")
+} catch (_) {
+    console.log("Scenario 3 pass")
+}
