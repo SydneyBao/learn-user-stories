@@ -45,4 +45,59 @@ export default class Bank {
         this.accounts.push(account); 
         return account;
     }
+    /**
+     * deposits money to a specified account number
+     * @param name -- name of the customer
+     * @param accountNumber -- account number of the customer
+     * @param amount -- amount deposited 
+     */
+    public deposit(name: string, accountNumber: string, amount: number) {
+        const account = this.findAccount(accountNumber)
+        if (!account) {
+            throw new Error ("Account does not exist")
+        }
+        else if (account?.name == name) {
+            account.balance += amount
+        } 
+        else {
+            throw new Error("You do not have access to this account")
+        }
+    }
+
+    /**
+     * withdraws money to a specified account number
+     * @param name -- name of the customer
+     * @param accountNumber -- account number of the customer
+     * @param amount -- amount deposited 
+     */
+    public withdraw(name: string, accountNumber: string, amount: number) {
+        const account = this.findAccount(accountNumber)
+        if (!account) {
+            throw new Error ("Account does not exist")
+        }
+        else if (account?.name == name) {
+            account.balance -= amount
+        } 
+        else {
+            throw new Error("You do not have access to this account")
+        }
+    }
+    /**
+     * Gets balance of a specified account
+     * @param name -- name of customer
+     * @param accountNumber -- account number of customer 
+     * @returns number -- account balance
+     */
+    public getBalance(name: string, accountNumber: string) {
+        const account = this.findAccount(accountNumber)
+        if (!account) {
+            throw new Error ("Account does not exist")
+        }
+        else if (account?.name == name) {
+            return account.balance
+        } 
+        else {
+            throw new Error("You do not have access to this account")
+        }
+    }
 }
